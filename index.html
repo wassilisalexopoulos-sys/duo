@@ -447,6 +447,30 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
         }
 
+        /* Mobile optimizations for about section */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-image {
+                order: -1; /* Move image to top on mobile */
+            }
+            
+            .about-image img {
+                height: 300px;
+                border-radius: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-image img {
+                height: 250px;
+                border-radius: 10px;
+            }
+        }
+
         .about-text h2 {
             font-family: 'DM Sans', sans-serif;
             font-size: 3rem;
