@@ -23,6 +23,17 @@
             overflow-x: hidden;
         }
 
+        /* Prevent horizontal scrolling on mobile */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         /* Language Toggle */
         .language-toggle {
             position: fixed;
@@ -456,18 +467,31 @@
             
             .about-image {
                 order: -1; /* Move image to top on mobile */
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
             }
             
             .about-image img {
                 height: 300px;
                 border-radius: 15px;
+                width: 100%;
+                max-width: 100%;
+                object-fit: cover;
             }
         }
 
         @media (max-width: 480px) {
+            .about-image {
+                margin: 0 -1rem; /* Negative margin to use full width */
+                width: calc(100% + 2rem);
+            }
+            
             .about-image img {
                 height: 250px;
                 border-radius: 10px;
+                width: 100%;
+                max-width: 100%;
             }
         }
 
@@ -776,19 +800,35 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 1.5rem;
+                padding: 0 1rem;
+                max-width: 100%;
+                overflow-x: hidden;
             }
 
             .nav-container {
-                padding: 0 1.5rem;
+                padding: 0 1rem;
+                max-width: 100%;
             }
 
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .service-card {
                 padding: 2rem;
+                max-width: 100%;
+            }
+
+            /* Ensure all sections don't overflow */
+            .hero, .services, .about, .gallery, .contact {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            /* Fix any potential overflow in grid layouts */
+            .services-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
         }
     </style>
