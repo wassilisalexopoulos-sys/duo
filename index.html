@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUO Coffee Catering - Premium Barista Services</title>
+    <meta name="description" content="Professional coffee catering services with expert baristas. Elevate your events with premium coffee experiences.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 0.3rem;
+            right: 0.3rem;
+            z-index: 1001;
+            display: flex;
+            gap: 0.05rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.05rem 0.1rem;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.1rem 0.2rem;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: #666;
+            min-width: 14px;
+            text-align: center;
+        }
+
+        .lang-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: #000;
+        }
+
+        .lang-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #000000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #666666;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #000000;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('images/macia.jpg') center/cover;
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease;
+        }
+
+        .hero-text h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text .highlight {
+            color: #000000;
+            position: relative;
+        }
+
+        .hero-text .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #000000;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: #000000;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #000000;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            border: 2px solid #000000;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: #000000;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000000;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #000000, transparent);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #000000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #000000;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #000000;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-item h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 0;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 0;
+            background: #000000;
+            color: white;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            color: #ffffff;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ffffff;
+            color: #000000;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero::before {
+                display: none;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="lang-btn" data-lang="de" title="Deutsch">DE</button>
+            <button class="lang-btn" data-lang="en" title="English">EN</button>
+        </div>
+
+        <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo-duo.png" alt="DUO Coffee">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#services" data-en="Services" data-de="Leistungen">Leistungen</a></li>
+                <li><a href="#about" data-en="About" data-de="Über uns">Über uns</a></li>
+                <li><a href="#gallery" data-en="Gallery" data-de="Galerie">Galerie</a></li>
+                <li><a href="#contact" data-en="Contact" data-de="Kontakt">Kontakt</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 data-en="Premium <span class='highlight'>Coffee</span> Catering" data-de="Premium <span class='highlight'>Kaffee</span> Catering">Premium <span class="highlight">Kaffee</span> Catering</h1>
+                <p data-en="Professional barista services for your special events. We bring exceptional coffee experiences directly to you." data-de="Professionelle Barista-Services für Ihre ganz besonderen Veranstaltungen. Wir bringen außergewöhnliche Kaffee-Erlebnisse direkt zu Ihnen.">Professionelle Barista-Services für Ihre ganz besonderen Veranstaltungen. Wir bringen außergewöhnliche Kaffee-Erlebnisse direkt zu Ihnen.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-primary" data-en="Book Now" data-de="Jetzt buchen">Jetzt buchen</a>
+                    <a href="#services" class="cta-secondary" data-en="Our Services" data-de="Unsere Leistungen">Unsere Leistungen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle" data-en="What We Offer" data-de="Was wir anbieten">Was wir anbieten</div>
+                <h2 class="section-title" data-en="Premium Coffee Services" data-de="Premium Kaffee-Services">Premium Kaffee-Services</h2>
+                <p class="section-description" data-en="From corporate events to private celebrations, we provide comprehensive coffee solutions tailored to your needs." data-de="Von Firmenveranstaltungen bis zu privaten Feiern bieten wir umfassende Kaffee-Lösungen, die auf Ihre Bedürfnisse zugeschnitten sind.">Von Firmenveranstaltungen bis zu privaten Feiern bieten wir umfassende Kaffee-Lösungen, die auf Ihre Bedürfnisse zugeschnitten sind.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3 data-en="Event Catering" data-de="Event-Catering">Event-Catering</h3>
+                    <p data-en="Professional coffee service for weddings, corporate events, and special occasions with premium equipment and expert baristas." data-de="Professioneller Kaffee-Service für Hochzeiten, Firmenveranstaltungen und besondere Anlässe mit Premium-Ausrüstung und erfahrenen Baristas.">Professioneller Kaffee-Service für Hochzeiten, Firmenveranstaltungen und besondere Anlässe mit Premium-Ausrüstung und erfahrenen Baristas.</p>
+                    <ul class="service-features">
+                        <li data-en="Custom menu planning" data-de="Individuelle Menüplanung">Individuelle Menüplanung</li>
+                        <li data-en="Professional barista team" data-de="Professionelles Barista-Team">Professionelles Barista-Team</li>
+                        <li data-en="Premium equipment setup" data-de="Premium-Ausrüstung">Premium-Ausrüstung</li>
+                        <li data-en="Flexible service hours" data-de="Flexible Servicezeiten">Flexible Servicezeiten</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 data-en="Corporate Services" data-de="Firmenservices">Firmenservices</h3>
+                    <p data-en="Regular office coffee service, meetings, and corporate events with customizable menus and flexible scheduling." data-de="Regelmäßiger Büro-Kaffee-Service, Meetings und Firmenveranstaltungen mit anpassbaren Menüs und flexibler Terminplanung.">Regelmäßiger Büro-Kaffee-Service, Meetings und Firmenveranstaltungen mit anpassbaren Menüs und flexibler Terminplanung.</p>
+                    <ul class="service-features">
+                        <li data-en="Weekly office service" data-de="Wöchentlicher Büro-Service">Wöchentlicher Büro-Service</li>
+                        <li data-en="Meeting coffee breaks" data-de="Meeting-Kaffeepausen">Meeting-Kaffeepausen</li>
+                        <li data-en="Executive catering" data-de="Executive-Catering">Executive-Catering</li>
+                        <li data-en="Custom branding options" data-de="Individuelle Branding-Optionen">Individuelle Branding-Optionen</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 data-en="Coffee Education" data-de="Kaffee-Schulung">Kaffee-Schulung</h3>
+                    <p data-en="Interactive coffee workshops, latte art classes, and brewing education for teams and coffee enthusiasts." data-de="Interaktive Kaffee-Workshops, Latte-Art-Kurse und Brüh-Schulungen für Teams und Kaffee-Enthusiasten.">Interaktive Kaffee-Workshops, Latte-Art-Kurse und Brüh-Schulungen für Teams und Kaffee-Enthusiasten.</p>
+                    <ul class="service-features">
+                        <li data-en="Latte art workshops" data-de="Latte-Art-Workshops">Latte-Art-Workshops</li>
+                        <li data-en="Brewing techniques" data-de="Brüh-Techniken">Brüh-Techniken</li>
+                        <li data-en="Team building sessions" data-de="Team-Building-Sessions">Team-Building-Sessions</li>
+                        <li data-en="Certification programs" data-de="Zertifizierungsprogramme">Zertifizierungsprogramme</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/alpi at work.jpg" alt="Professional barista crafting coffee">
+                </div>
+                <div class="about-text">
+                    <h2 data-en="Passionate Coffee Professionals" data-de="Leidenschaftliche Kaffee-Profis">Leidenschaftliche Kaffee-Profis</h2>
+                    <p data-en="At DUO Coffee, we believe that exceptional coffee is an art form. Our certified baristas bring years of experience and passion to every cup we serve." data-de="Bei DUO Coffee glauben wir, dass außergewöhnlicher Kaffee eine Kunstform ist. Unsere zertifizierten Baristas bringen jahrelange Erfahrung und Leidenschaft in jede Tasse, die wir servieren.">Bei DUO Coffee glauben wir, dass außergewöhnlicher Kaffee eine Kunstform ist. Unsere zertifizierten Baristas bringen jahrelange Erfahrung und Leidenschaft in jede Tasse, die wir servieren.</p>
+                    <p data-en="We source only the finest beans from sustainable farms and roast them to perfection. Our mobile coffee stations are equipped with professional-grade equipment to ensure every drink meets our high standards." data-de="Wir beziehen nur die besten Bohnen von nachhaltigen Farmen und rösten sie zur Perfektion. Unsere mobilen Kaffeestationen sind mit professioneller Ausrüstung ausgestattet, um sicherzustellen, dass jedes Getränk unseren hohen Standards entspricht.">Wir beziehen nur die besten Bohnen von nachhaltigen Farmen und rösten sie zur Perfektion. Unsere mobilen Kaffeestationen sind mit professioneller Ausrüstung ausgestattet, um sicherzustellen, dass jedes Getränk unseren hohen Standards entspricht.</p>
+                    <p data-en="From intimate gatherings to large-scale events, we adapt our service to create memorable coffee experiences that your guests will talk about long after the event ends." data-de="Von intimen Zusammenkünften bis hin zu Großveranstaltungen passen wir unseren Service an, um unvergessliche Kaffee-Erlebnisse zu schaffen, über die Ihre Gäste noch lange nach dem Event sprechen werden.">Von intimen Zusammenkünften bis hin zu Großveranstaltungen passen wir unseren Service an, um unvergessliche Kaffee-Erlebnisse zu schaffen, über die Ihre Gäste noch lange nach dem Event sprechen werden.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4 data-en="Certified Baristas" data-de="Zertifizierte Baristas">Zertifizierte Baristas</h4>
+                            <p data-en="Professional training and certification" data-de="Professionelle Ausbildung und Zertifizierung">Professionelle Ausbildung und Zertifizierung</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 data-en="Sustainable Sourcing" data-de="Nachhaltige Beschaffung">Nachhaltige Beschaffung</h4>
+                            <p data-en="Ethically sourced premium beans" data-de="Ethisch bezogene Premium-Bohnen">Ethisch bezogene Premium-Bohnen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle" data-en="Our Work" data-de="Unsere Arbeit">Unsere Arbeit</div>
+                <h2 class="section-title" data-en="Coffee Artistry in Action" data-de="Kaffee-Kunst in Aktion">Kaffee-Kunst in Aktion</h2>
+                <p class="section-description" data-en="See the passion and precision that goes into every cup we create." data-de="Sehen Sie die Leidenschaft und Präzision, die in jede Tasse fließt, die wir kreieren.">Sehen Sie die Leidenschaft und Präzision, die in jede Tasse fließt, die wir kreieren.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/macia.jpg" alt="Coffee preparation">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/alpi.jpg" alt="Coffee machine detail">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/macia detail.jpg" alt="Coffee art">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/milk in coffee.jpg" alt="Coffee service">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/macia prep.jpg" alt="Coffee preparation">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/hand in macia.jpg" alt="Barista at work">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 data-en="Ready to Elevate Your Event?" data-de="Bereit, Ihr Event zu bereichern?">Bereit, Ihr Event zu bereichern?</h2>
+                    <p data-en="Let's discuss how we can make your next event unforgettable with our premium coffee services. Contact us for a personalized quote and consultation." data-de="Lassen Sie uns besprechen, wie wir Ihr nächstes Event mit unseren Premium-Kaffee-Services unvergesslich machen können. Kontaktieren Sie uns für ein individuelles Angebot und eine Beratung.">Lassen Sie uns besprechen, wie wir Ihr nächstes Event mit unseren Premium-Kaffee-Services unvergesslich machen können. Kontaktieren Sie uns für ein individuelles Angebot und eine Beratung.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong data-en="Phone" data-de="Telefon">Telefon</strong><br>
+                            +1 (555) 123-4567
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong data-en="Email" data-de="E-Mail">E-Mail</strong><br>
+                            info@duocoffee.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong data-en="Service Area" data-de="Servicegebiet">Servicegebiet</strong><br>
+                            <span data-en="Rhein-Main-Area" data-de="Rhein-Main-Gebiet">Rhein-Main-Gebiet</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong data-en="Availability" data-de="Verfügbarkeit">Verfügbarkeit</strong><br>
+                            <span data-en="7 Days a Week, 24/7 Emergency Service" data-de="7 Tage die Woche, 24/7 Notfall-Service">7 Tage die Woche, 24/7 Notfall-Service</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-en="Full Name" data-de="Vollständiger Name">Vollständiger Name</label>
+                        <input type="text" id="name" name="name" data-en="Your full name" data-de="Ihr vollständiger Name" placeholder="Ihr vollständiger Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-en="Email Address" data-de="E-Mail-Adresse">E-Mail-Adresse</label>
+                        <input type="email" id="email" name="email" data-en="your.email@example.com" data-de="ihre.email@beispiel.com" placeholder="ihre.email@beispiel.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" data-en="Phone Number" data-de="Telefonnummer">Telefonnummer</label>
+                        <input type="tel" id="phone" name="phone" data-en="(555) 123-4567" data-de="(555) 123-4567" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date" data-en="Event Date" data-de="Event-Datum">Event-Datum</label>
+                        <input type="date" id="event-date" name="event-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests" data-en="Number of Guests" data-de="Anzahl der Gäste">Anzahl der Gäste</label>
+                        <input type="number" id="guests" name="guests" min="1" data-en="50" data-de="50" placeholder="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-en="Event Details" data-de="Event-Details">Event-Details</label>
+                        <textarea id="message" name="message" data-en="Tell us about your event, special requirements, or any questions you have..." data-de="Erzählen Sie uns von Ihrem Event, besonderen Anforderungen oder Fragen..." placeholder="Erzählen Sie uns von Ihrem Event, besonderen Anforderungen oder Fragen..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" data-en="Send Message" data-de="Nachricht senden">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p data-en="&copy; 2024 DUO Coffee Catering. Crafting exceptional coffee experiences since day one." data-de="&copy; 2024 DUO Coffee Catering. Seit Tag eins kreieren wir außergewöhnliche Kaffee-Erlebnisse.">&copy; 2024 DUO Coffee Catering. Seit Tag eins kreieren wir außergewöhnliche Kaffee-Erlebnisse.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+            const message = currentLang === 'de' 
+                ? 'Vielen Dank für Ihre Nachricht! Wir werden uns innerhalb von 24 Stunden mit Ihnen in Verbindung setzen, um Ihr Event zu besprechen.'
+                : 'Thank you for your message! We will contact you within 24 hours to discuss your event.';
+            alert(message);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Language switching
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const elements = document.querySelectorAll('[data-en], [data-de]');
+
+        // Set German as default
+        document.querySelector('[data-lang="de"]').classList.add('active');
+
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const selectedLang = this.getAttribute('data-lang');
+                
+                // Update active button
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update all elements with language data
+                elements.forEach(element => {
+                    const text = element.getAttribute(`data-${selectedLang}`);
+                    if (text) {
+                        element.innerHTML = text;
+                    }
+                    
+                    // Also update placeholder attributes for form inputs
+                    const placeholder = element.getAttribute(`data-${selectedLang}`);
+                    if (placeholder && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA')) {
+                        element.setAttribute('placeholder', placeholder);
+                    }
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .about-text, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
