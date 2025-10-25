@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>DUO Coffee Catering - Premium Barista Services</title>
     <meta name="description" content="Professional coffee catering services with expert baristas. Elevate your events with premium coffee experiences.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,10 @@
             line-height: 1.6;
             color: #000000;
             overflow-x: hidden;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         /* Prevent horizontal scrolling on mobile */
@@ -171,9 +175,78 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: #000000;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .mobile-menu-toggle:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .mobile-menu-toggle.active {
+            color: #ffffff;
+        }
+
+        /* Modern Mobile Menu */
+        .nav-menu {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 1000;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                color: #ffffff;
+                font-size: 1.5rem;
+                font-weight: 500;
+                padding: 1rem 2rem;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                text-align: center;
+                min-width: 200px;
+            }
+
+            .nav-menu a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateY(-2px);
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                position: relative;
+                z-index: 1001;
+            }
         }
 
         /* Hero Section */
@@ -484,69 +557,6 @@
             display: block;
         }
 
-        /* Mobile optimizations for about section */
-        @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .about-image {
-                order: -1; /* Move image to top on mobile */
-                width: 100%;
-                max-width: 100%;
-                overflow: hidden;
-            }
-            
-            .about-image img {
-                height: 250px;
-                border-radius: 15px;
-                width: 100%;
-                max-width: 100%;
-                object-fit: cover;
-            }
-
-            .about-text h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .about-image {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                max-width: 100vw;
-                overflow: hidden;
-            }
-            
-            .about-image img {
-                height: 180px;
-                border-radius: 10px;
-                width: 100%;
-                max-width: 100%;
-                object-fit: cover;
-                display: block;
-            }
-
-            /* Force all elements to stay within viewport */
-            .about-content {
-                width: 100%;
-                max-width: 100vw;
-                padding: 0;
-                margin: 0;
-            }
-
-            .about-text {
-                width: 100%;
-                max-width: 100%;
-                padding: 0 1rem;
-            }
-
-            .about-text h2 {
-                font-size: 1.5rem;
-            }
-        }
 
         .about-text h2 {
             font-family: 'DM Sans', sans-serif;
@@ -804,11 +814,14 @@
             }
         }
 
-        /* Responsive Design */
+        /* iPhone-Optimized Responsive Design */
+        
+        /* iPad and smaller tablets */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
             .hero::before {
@@ -818,49 +831,201 @@
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
 
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+        /* iPhone 14 Pro Max and similar large phones */
+        @media (max-width: 430px) {
+            .container {
+                padding: 0 1.5rem;
             }
 
-            .mobile-menu-toggle {
-                display: block;
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
+                min-height: 100vh;
             }
 
             .hero-text h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem 2rem;
+                font-size: 1rem;
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .cta-buttons {
-                justify-content: center;
+            .service-card {
+                padding: 2rem 1.5rem;
+                text-align: center;
             }
 
-            .hero-stats {
-                justify-content: center;
+            .service-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .service-card p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-image img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                height: 200px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-info h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-item {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .contact-item h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-item p {
+                font-size: 0.9rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 1rem 2rem;
+                font-size: 1rem;
             }
         }
 
-        @media (max-width: 480px) {
+        /* iPhone 14 Pro and similar medium phones */
+        @media (max-width: 393px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .nav-container {
+                padding: 0 1.25rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.6rem;
+            }
+
+            .contact-info h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* iPhone SE and smaller phones */
+        @media (max-width: 375px) {
             .container {
                 padding: 0 1rem;
-                max-width: 100%;
-                overflow-x: hidden;
             }
 
             .nav-container {
                 padding: 0 1rem;
-                max-width: 100%;
+            }
+
+            .hero {
+                padding: 3rem 0;
             }
 
             .hero-text h1 {
@@ -868,24 +1033,83 @@
             }
 
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-info h2 {
+                font-size: 1.4rem;
             }
 
             .service-card {
-                padding: 2rem;
-                max-width: 100%;
+                padding: 1.5rem 1rem;
             }
 
-            /* Ensure all sections don't overflow */
-            .hero, .services, .about, .gallery, .contact {
-                max-width: 100%;
-                overflow-x: hidden;
+            .about-image img {
+                height: 200px;
+            }
+        }
+
+        /* iPhone-specific optimizations */
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
             }
 
-            /* Fix any potential overflow in grid layouts */
-            .services-grid, .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .nav-container {
+                padding-left: max(1rem, env(safe-area-inset-left));
+                padding-right: max(1rem, env(safe-area-inset-right));
+            }
+        }
+
+        /* Touch improvements for iPhone */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-primary,
+            .cta-secondary,
+            .submit-btn {
+                min-height: 44px; /* Apple's recommended touch target size */
+            }
+
+            .nav-menu a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-menu-toggle {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            .lang-btn {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+
+        /* iPhone landscape optimizations */
+        @media (max-width: 896px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding: 2rem 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
             }
         }
     </style>
@@ -1176,12 +1400,48 @@
             alert(message);
         });
 
-        // Mobile menu toggle
+        // Modern Mobile Menu Toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
+        const body = document.body;
 
         mobileMenuToggle.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+            body.classList.toggle('menu-open');
+            
+            // Toggle hamburger icon
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+            } else {
+                icon.className = 'fas fa-bars';
+            }
+        });
+
+        // Close menu when clicking on links
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.className = 'fas fa-bars';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+                body.classList.remove('menu-open');
+                
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.className = 'fas fa-bars';
+            }
         });
 
         // Language switching
@@ -1239,4 +1499,5 @@
         });
     </script>
 </body>
+</html>
 </html>
