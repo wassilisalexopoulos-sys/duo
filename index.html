@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DUO Coffee Catering - Premium Barista Services</title>
     <meta name="description" content="Professional coffee catering services with expert baristas. Elevate your events with premium coffee experiences.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +29,33 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         img {
             max-width: 100%;
             height: auto;
+        }
+
+        /* Ensure all containers don't exceed viewport */
+        .container, .nav-container, .hero-content, .about-content, .contact-content {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* Global mobile overflow prevention */
+        @media (max-width: 768px) {
+            * {
+                max-width: 100vw !important;
+                box-sizing: border-box !important;
+            }
+            
+            body, html {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
         }
 
         /* Language Toggle */
@@ -456,6 +480,8 @@
             object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            max-width: 100%;
+            display: block;
         }
 
         /* Mobile optimizations for about section */
@@ -483,8 +509,11 @@
 
         @media (max-width: 480px) {
             .about-image {
-                margin: 0 -1rem; /* Negative margin to use full width */
-                width: calc(100% + 2rem);
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                max-width: 100vw;
+                overflow: hidden;
             }
             
             .about-image img {
@@ -492,6 +521,22 @@
                 border-radius: 10px;
                 width: 100%;
                 max-width: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Force all elements to stay within viewport */
+            .about-content {
+                width: 100%;
+                max-width: 100vw;
+                padding: 0;
+                margin: 0;
+            }
+
+            .about-text {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 1rem;
             }
         }
 
